@@ -8,5 +8,5 @@
 	$entityManager->persist($user);
 	$entityManager->flush();
 
-	header("location: ../View/cadUser.php");
+	header("location: ../view/cadUser.php");
  ?>

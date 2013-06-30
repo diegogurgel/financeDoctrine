@@ -16,9 +16,9 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__.'/entities'
 $conn = array(
 	  'driver' 	 => 'pdo_mysql'
 	, 'user' 	 => 'root'
-	, 'password' => 'usbw'
-	, 'dbname' 	 => 'blog'
-	, 'port'	=>3307
+	, 'password' => 'root'
+	, 'dbname' 	 => 'finance'
+	, 'port'	 =>	3306
 );
 
 

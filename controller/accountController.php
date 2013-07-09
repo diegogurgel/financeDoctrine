@@ -1,20 +1,32 @@
 <?php 
 	
 	require_once("../bootstrap.php");
-	//$op = $_POST["op"];
+	$op = $_POST["op"];
 	$conta = new accounts();
 
 	$conta->setId(66);
 	$conta->setName("Conta500");
 	$conta->setCreated(new DateTime("now"));
 	$conta->setModified(new DateTime("now"));
-	selectAll($entityManager);
-	//insert($conta, $entityManager);
 
-	//$contas = selectAll($entityManager);
+	switch ($op) {
+		case 'list':
+			selectAll($entityManager);
+			break;
+		case 'insert':
+			insert($conta, $entityManager);
+			break;
+		case 'update':
+			update($conta, $entityManager);
+			break;
+		case 'remove':
+			remove(11,$entityManager);
+			break ;
+		default:
+			# code...
+			break;
+	}
 
-	//echo update($conta, $entityManager);
-	//remove(11,$entityManager);
 	function insert($conta, $entityManager){
 		$entityManager->persist($conta);
 		$entityManager->flush();

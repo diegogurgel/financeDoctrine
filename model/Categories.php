@@ -24,7 +24,7 @@ class categories {
     {
         return $this->id;
     }
-        function setId($id)
+    function setId($id)
     {
         $this->id = $id;
     }

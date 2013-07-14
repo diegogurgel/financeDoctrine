@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Lista de Categorias</title>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="author" href="humans.txt"/>
+        <script type="text/javascript">
+            window.onload= function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost/financeDoctrine/controller/categorieController.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4){
+                apresentaJsonCategorias(JSON.parse(xhr.responseText));
+            }
+
+        }
+        function apresentaJsonCategorias(json){
+            for(var i in json){
+                conta = document.querySelector('.conta').cloneNode(true);
+                conta.childNodes[1].innerHTML = json[i].id+"  "+json[i].name;
+                conta.childNodes[4].innerHTML = json[i].created;
+                conta.childNodes[7].innerHTML = json[i].modified;
+                var corpo =  document.getElementsByTagName("body")[0];
+                conta.style.display = "inline";
+                corpo.appendChild(conta);
+
+            }
+        }
+
+        xhr.send("op=list");
+
+        var formulario = document.querySelector("form");
+        formulario.onsubmit = function(){
+            if(formulario.childNodes[1].value ==""){
+                console.log("vazio");
+                return false;
+
+            }
+            else{
+                formulario.submit();
+            }
+        }
+}
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <form action="../controller/categorieController.php" method="post">
+            <input type="text" name="nomeCategoria" value="" placeholder="Nome da categoria"/>
+            <input type="hidden" name="op" value="insert">
+            <button>Adicionar categoria</button>
+        </form>
+        <section id="listaCategorias">
+            <article class="conta">
+            <h4></h4>
+            <span class="lbl">Criada em </span><span class="dtCriacao"></span>
+            <span class="lbl">Ultima Modificação</span><span class="dtCriacao"></span>
+            </article>
+        </section>
+    </body>
+</html>

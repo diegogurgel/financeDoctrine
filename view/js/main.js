@@ -1,8 +1,6 @@
 
 
 window.onload= function(){
-	var btnListarContas =  document.getElementById('listarContas');
-	btnListarContas.onclick = function(){
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', 'http://localhost/financeDoctrine/controller/accountController.php', true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -26,13 +24,20 @@ window.onload= function(){
 				corpo.appendChild(conta);
 
 			}
-			
-
-
 		}
 
 		xhr.send("op=list");
 
+		var formulario = document.querySelector("form");
+		formulario.onsubmit = function(){
+			if(formulario.childNodes[1].value ==""){
+				console.log("vazio");
+				return false;
 
-	}
+			}
+			else{
+				formulario.submit();
+			}
+		}
 }
+

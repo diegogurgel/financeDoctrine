@@ -14,7 +14,12 @@
 			selectAll($entityManager);
 			break;
 		case 'insert':
+			$nomeConta = $_POST["nomeConta"];
+			$conta->setName($nomeConta);
+			$conta->setCreated(new DateTime("now"));
+			$conta->setModified(new DateTime("now"));
 			insert($conta, $entityManager);
+			header("location: ../view/listAccounts.html");
 			break;
 		case 'update':
 			update($conta, $entityManager);

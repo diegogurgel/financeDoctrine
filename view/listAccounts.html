@@ -1,14 +1,27 @@
 <!<!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Lista de contas</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="author" href="humans.txt">
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="author" href="humans.txt"/>
     </head>
     <body>
+        <form action="../controller/accountController.php" method="post">
+            <input type="text" name="nomeConta" value="" placeholder="Nome da conta"/>
+            <input type="hidden" name="op" value="insert">
+            <button>Adicionar conta</button>
+        </form>
+        <button id="listarContas">Listar Conta</button>
+        <section id="listaContas">
+            <article class="conta">
+            <h4></h4>
+            <span class="lbl">Criada em </span><span class="dtCriacao"></span>
+            <span class="lbl">Ultima Modificação</span><span class="dtCriacao"></span>
+            </article>
+        </section>
         
         <script src="js/main.js"></script>
     </body>
